@@ -1,29 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
+import ContactForm from "@/components/contact/ContactForm";
 import { siteConfig } from "@/data/content";
 import { staggerContainer, staggerItem } from "@/data/animations";
 import { useFinePointer } from "@/hooks/useFinePointer";
 
 export default function ContactPage() {
   const finePointer = useFinePointer();
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-
-  const handleSubmit = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) return;
-    setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
-  };
 
   return (
     <>
@@ -143,89 +127,7 @@ export default function ContactPage() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
               className="lg:col-span-3"
             >
-              {submitted ? (
-                <div className="bg-surface-container-lowest rounded-2xl p-8 sm:p-12 ambient-shadow text-center">
-                  <div className="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mx-auto mb-6">
-                    <span
-                      className="material-symbols-outlined text-primary text-3xl"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      check_circle
-                    </span>
-                  </div>
-                  <h2 className="text-2xl font-black tracking-tight text-on-background mb-3">
-                    Message Sent!
-                  </h2>
-                  <p className="text-on-surface-variant text-base leading-relaxed">
-                    Thank you for reaching out. I&apos;ll be in touch within 24 hours.
-                  </p>
-                </div>
-              ) : (
-                <div className="bg-surface-container-lowest rounded-2xl p-6 sm:p-10 ambient-shadow space-y-6">
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold text-outline uppercase tracking-widest">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder="Your full name"
-                      className="w-full px-4 py-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 text-on-surface text-sm placeholder:text-outline/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold text-outline uppercase tracking-widest">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="your@email.com"
-                      className="w-full px-4 py-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 text-on-surface text-sm placeholder:text-outline/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold text-outline uppercase tracking-widest">
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={form.message}
-                      onChange={handleChange}
-                      placeholder="Tell me about your project or opportunity..."
-                      rows={6}
-                      className="w-full px-4 py-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 text-on-surface text-sm placeholder:text-outline/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
-                    />
-                  </div>
-
-                  <button
-                    onClick={handleSubmit}
-                    disabled={loading || !form.name || !form.email || !form.message}
-                    className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-                  >
-                    {loading ? (
-                      <>
-                        <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                        </svg>
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        Send Message
-                        <span className="material-symbols-outlined text-base">send</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-              )}
+              <ContactForm />
             </motion.div>
           </div>
         </div>

@@ -8,6 +8,7 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import AnimationProvider from "@/components/providers/AnimationProvider";
 import ScrollToTop from "@/components/animations/ScrollToTop";
 import PageTransition from "@/components/animations/PageTransition";
+import { useEffect } from "react";
 
 export default function AppProvider({
     children,
@@ -15,6 +16,12 @@ export default function AppProvider({
     children: React.ReactNode;
 }) {
     const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        document.fonts.ready.then(() => {
+            document.body.classList.add("fonts-loaded");
+        });
+    }, []);
 
     return (
         <>

@@ -100,3 +100,16 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #3525cd;
 }
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+}
+
+.fonts-loaded .material-symbols-outlined {
+  opacity: 1;
+}

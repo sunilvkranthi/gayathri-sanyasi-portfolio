@@ -23,44 +23,62 @@ export default function CaseStudyCard({
   featured = false,
 }: CaseStudyCardProps) {
   return (
-    <motion.div
-      whileHover={{ y: -6, transition: { duration: 0.3 } }}
-      className={`bg-surface-container-lowest rounded-2xl overflow-hidden group ambient-shadow ${
-        featured ? "md:col-span-2" : ""
-      }`}
-    >
-      <div className="p-8 h-full flex flex-col justify-between">
-        <div>
-          <div className="flex items-center justify-between mb-6">
-            <span className={`text-3xl font-black ${badgeColor}`}>{badge}</span>
-            <div className="flex flex-wrap gap-2 justify-end">
-              {tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs font-bold text-outline bg-surface-container-low px-2.5 py-1 rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
+    <Link href={`/case-studies/${slug}`} className="block">
+      <motion.div
+        whileHover={{ y: -10, scale: 1.02 }}
+        transition={{ duration: 0.3 }}
+        className={`group relative bg-surface-container-lowest rounded-2xl overflow-hidden ambient-shadow transition-all duration-300 ${featured ? "md:col-span-2" : ""
+          }`}
+      >
+        {/* BORDER GLOW */}
+        <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-primary/30 transition-all duration-300 pointer-events-none" />
+
+        <div className="p-8 h-full flex flex-col justify-between">
+
+          {/* TOP */}
+          <div>
+            <div className="flex items-center justify-between mb-6">
+
+              {/* BADGE (HERO ELEMENT 🔥) */}
+              <span
+                className={`text-3xl font-black ${badgeColor} tracking-tight`}
+              >
+                {badge}
+              </span>
+
+              {/* TAGS */}
+              <div className="flex flex-wrap gap-2 justify-end">
+                {tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs font-bold text-outline bg-surface-container-low px-2.5 py-1 rounded-full transition-colors duration-200 group-hover:bg-primary/10 group-hover:text-primary"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
+
+            {/* TITLE */}
+            <h3 className="text-xl font-black tracking-tight text-on-background mb-3 group-hover:text-primary transition-colors duration-300">
+              {title}
+            </h3>
+
+            {/* SUMMARY */}
+            <p className="text-sm text-on-surface-variant leading-relaxed">
+              {summary}
+            </p>
           </div>
-          <h3 className="text-xl font-black tracking-tight text-on-background mb-3">
-            {title}
-          </h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            {summary}
-          </p>
+
+          {/* CTA */}
+          <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-all duration-300">
+            Read Full Study
+            <span className="material-symbols-outlined text-base transition-transform duration-300 group-hover:translate-x-1">
+              arrow_forward
+            </span>
+          </div>
         </div>
-        <Link
-          href={`/case-studies/${slug}`}
-          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all duration-200 group"
-        >
-          Read Full Study
-          <span className="material-symbols-outlined text-base">
-            arrow_forward
-          </span>
-        </Link>
-      </div>
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 }

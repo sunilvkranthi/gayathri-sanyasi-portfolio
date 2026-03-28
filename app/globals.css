@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: #f9f9ff;
+    color: #141b2b;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #e2dfff;
+    color: #0f0069;
+  }
+}
+
+@layer components {
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-primary-container text-white px-8 py-4 rounded-full font-bold text-base shadow-xl hover:scale-105 transition-all duration-300;
+    box-shadow: 0 20px 40px rgba(53, 37, 205, 0.2);
+  }
+
+  .btn-secondary {
+    @apply bg-surface-container-highest text-on-surface px-8 py-4 rounded-full font-bold text-base hover:bg-surface-variant transition-colors duration-300;
+  }
+
+  .card {
+    @apply bg-surface-container-lowest rounded-2xl p-6 hover:shadow-lg transition-all duration-300;
+  }
+
+  .section-label {
+    @apply text-xs font-bold tracking-[0.3em] uppercase text-primary;
+  }
+
+  .metric-card {
+    @apply p-4 rounded-xl bg-surface-container-low border border-outline-variant/20 hover:bg-surface-container-high transition-colors duration-300;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-bold tracking-widest uppercase;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .ambient-shadow {
+    box-shadow: 0 40px 80px rgba(20, 27, 43, 0.06);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #3525cd, #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f3ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c3c0ff;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3525cd;
+}

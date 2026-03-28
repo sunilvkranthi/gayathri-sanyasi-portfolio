@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import AnimationProvider from "@/components/providers/AnimationProvider";
 
 export const metadata: Metadata = {
   title: "Gayathri Sanyasi | B2B Sales Account Manager",
@@ -35,11 +36,13 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-surface text-on-surface font-sans antialiased">
-        <SmoothScroll>
-          <Navbar />
-          <main className="pt-20">{children}</main>
-          <Footer />
-        </SmoothScroll>
+        <AnimationProvider>
+          <SmoothScroll>
+            <Navbar />
+            <main className="pt-20">{children}</main>
+            <Footer />
+          </SmoothScroll>
+        </AnimationProvider>
       </body>
     </html>
   );

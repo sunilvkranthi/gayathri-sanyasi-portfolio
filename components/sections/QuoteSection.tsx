@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeInUp } from "@/data/animations";
+import Reveal from "@/components/animations/Reveal";
 
 interface QuoteSectionProps {
   label?: string;
@@ -29,27 +29,42 @@ export default function QuoteSection({
   };
 
   return (
-    <section className="py-24 bg-surface-container-lowest">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={fadeInUp}
-        >
-          {label && (
-            <p className="section-label mb-8">{label}</p>
-          )}
-          <blockquote className="text-2xl md:text-3xl font-semibold leading-snug tracking-tight text-on-surface">
-            "{renderQuote()}"
-          </blockquote>
-          {author && (
-            <p className="mt-6 text-sm font-bold text-outline uppercase tracking-widest">
-              — {author}
-            </p>
-          )}
-        </motion.div>
-      </div>
-    </section>
+    <Reveal> {/* ✅ ONLY ONE REVEAL */}
+      <section className="py-28 bg-surface-container-lowest relative overflow-hidden">
+
+        {/* Subtle background glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="w-[400px] h-[400px] bg-primary/10 blur-[120px] rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 text-center relative">
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            {/* LABEL */}
+            {label && (
+              <p className="section-label mb-8">{label}</p>
+            )}
+
+            {/* QUOTE */}
+            <blockquote className="text-2xl md:text-3xl font-semibold leading-snug tracking-tight text-on-surface">
+              "{renderQuote()}"
+            </blockquote>
+
+            {/* AUTHOR */}
+            {author && (
+              <p className="mt-6 text-sm font-bold text-outline uppercase tracking-widest">
+                — {author}
+              </p>
+            )}
+
+          </motion.div>
+        </div>
+      </section>
+    </Reveal>
   );
 }

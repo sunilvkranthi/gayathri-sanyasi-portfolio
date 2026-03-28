@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Reveal from "@/components/animations/Reveal"; // ✅ ADD THIS
 import { staggerContainer, staggerItem } from "@/data/animations";
 import { heroMetrics, siteConfig } from "@/data/content";
+import MagneticButton from "../ui/MagneticButton";
 
 export default function HeroSection() {
   return (
@@ -103,12 +104,20 @@ export default function HeroSection() {
               variants={staggerItem}
               className="flex flex-wrap gap-4 pt-4"
             >
-              <Link href="/case-studies" className="btn-primary">
-                View My Work
-              </Link>
-              <Link href="/contact" className="btn-secondary">
-                Contact Me
-              </Link>
+              <MagneticButton>
+                <div>
+                  <Link href="/case-studies" className="btn-primary">
+                    View My Work
+                  </Link>
+                </div>
+              </MagneticButton>
+              <MagneticButton>
+                <div>
+                  <Link href="/contact" className="btn-secondary">
+                    Contact Me
+                  </Link>
+                </div>
+              </MagneticButton>
             </motion.div>
           </Reveal>
         </motion.div>

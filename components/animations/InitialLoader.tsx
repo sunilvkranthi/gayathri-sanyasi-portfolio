@@ -23,9 +23,13 @@ export default function InitialLoader({
 
     useEffect(() => {
         let count = 0;
+        const coarse =
+            typeof window !== "undefined" &&
+            window.matchMedia("(pointer: coarse)").matches;
+        const tickMs = coarse ? 85 : 50;
 
         const interval = setInterval(() => {
-            count += Math.random() * 4.5;
+            count += coarse ? Math.random() * 3.2 : Math.random() * 4.5;
 
             if (count >= 100) {
                 count = 100;
@@ -36,7 +40,7 @@ export default function InitialLoader({
 
                 setTimeout(() => {
                     onFinish();
-                }, 1200);
+                }, coarse ? 800 : 1200);
             }
 
             const progressValue = Math.min(100, Math.floor(count));
@@ -50,7 +54,7 @@ export default function InitialLoader({
             // ✅ CONTROLLED SMOOTHING (NO OVERSHOOT)
             setDisplayValue((prev) => {
                 const diff = targetRevenue - prev;
-                return prev + diff * 0.15;
+                return prev + diff * (coarse ? 0.22 : 0.15);
             });
 
             // 🧠 MESSAGE SWITCH
@@ -59,7 +63,7 @@ export default function InitialLoader({
                 messages.length - 1
             );
             setMessageIndex(msgIndex);
-        }, 50);
+        }, tickMs);
 
         return () => clearInterval(interval);
     }, [onFinish]);
@@ -73,16 +77,16 @@ export default function InitialLoader({
         >
             {/* TITLE */}
             <motion.h1
-                className="text-3xl md:text-4xl font-black text-on-background mb-6"
+                className="text-2xl sm:text-3xl md:text-4xl font-black text-on-background mb-5 sm:mb-6 px-2"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
             >
                 Building Revenue Engine
             </motion.h1>
 
-            {/* GRAPH 📈 WITH GLOW */}
-            <div className="w-72 h-32 mb-6 relative">
-                <svg viewBox="0 0 300 100" className="w-full h-full">
+            {/* GRAPH 📈 (glow layer omitted on narrow viewports — cheaper paint) */}
+            <div className="w-[min(100%,18rem)] sm:w-72 h-28 sm:h-32 mb-5 sm:mb-6 relative mx-auto">
+                <svg viewBox="0 0 300 100" className="w-full h-full" aria-hidden>
                     <motion.path
                         d="M0,90 Q50,70 100,60 T200,40 T300,20"
                         fill="none"
@@ -94,13 +98,12 @@ export default function InitialLoader({
                         transition={{ ease: "easeOut" }}
                     />
 
-                    {/* ✨ Glow layer */}
                     <motion.path
                         d="M0,90 Q50,70 100,60 T200,40 T300,20"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="6"
-                        className="text-primary opacity-20 blur-sm"
+                        className="text-primary opacity-20 blur-sm max-md:hidden"
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: progress / 100 }}
                     />
@@ -115,7 +118,7 @@ export default function InitialLoader({
             </motion.div>
 
             {/* PROGRESS BAR */}
-            <div className="w-64 h-2 bg-surface-container-low rounded-full overflow-hidden mb-3">
+            <div className="w-[min(100%,16rem)] sm:w-64 h-2 bg-surface-container-low rounded-full overflow-hidden mb-3 mx-auto">
                 <motion.div
                     className="h-full bg-primary"
                     style={{ width: `${progress}%` }}

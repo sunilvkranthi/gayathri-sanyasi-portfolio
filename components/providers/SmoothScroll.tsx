@@ -9,19 +9,23 @@ export default function SmoothScroll({
     children: React.ReactNode;
 }) {
     useEffect(() => {
+        if (window.matchMedia("(pointer: coarse)").matches) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
         const lenis = new Lenis({
-            duration: 1.2, // smoothness
+            duration: 1.2,
             smoothWheel: true,
         });
 
+        let rafId = 0;
         function raf(time: number) {
             lenis.raf(time);
-            requestAnimationFrame(raf);
+            rafId = requestAnimationFrame(raf);
         }
-
-        requestAnimationFrame(raf);
+        rafId = requestAnimationFrame(raf);
 
         return () => {
+            cancelAnimationFrame(rafId);
             lenis.destroy();
         };
     }, []);

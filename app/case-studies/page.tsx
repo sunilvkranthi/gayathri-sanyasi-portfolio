@@ -10,8 +10,8 @@ export default function CaseStudiesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 sm:py-20 lg:py-24 bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -23,13 +23,13 @@ export default function CaseStudiesPage() {
             </motion.p>
             <motion.h1
               variants={staggerItem}
-              className="text-5xl md:text-7xl font-black tracking-tighter text-on-background leading-tight"
+              className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-on-background leading-tight text-balance"
             >
               Case <span className="text-primary">Studies</span>
             </motion.h1>
             <motion.p
               variants={staggerItem}
-              className="mt-6 text-xl text-on-surface-variant leading-relaxed max-w-xl"
+              className="mt-6 text-base sm:text-xl text-on-surface-variant leading-relaxed max-w-xl"
             >
               Real results from complex account navigation. Each study represents a
               strategic challenge solved through consultative selling and deep
@@ -40,8 +40,8 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Case Studies Grid */}
-      <section className="pb-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="pb-16 sm:pb-24 bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"

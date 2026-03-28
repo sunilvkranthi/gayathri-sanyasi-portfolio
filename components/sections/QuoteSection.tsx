@@ -30,14 +30,14 @@ export default function QuoteSection({
 
   return (
     <Reveal> {/* ✅ ONLY ONE REVEAL */}
-      <section className="py-28 bg-surface-container-lowest relative overflow-hidden">
+      <section className="py-16 sm:py-24 lg:py-28 bg-surface-container-lowest relative overflow-hidden">
 
         {/* Subtle background glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="w-[400px] h-[400px] bg-primary/10 blur-[120px] rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         </div>
 
-        <div className="max-w-4xl mx-auto px-6 text-center relative">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative">
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -51,8 +51,10 @@ export default function QuoteSection({
             )}
 
             {/* QUOTE */}
-            <blockquote className="text-2xl md:text-3xl font-semibold leading-snug tracking-tight text-on-surface">
-              "{renderQuote()}"
+            <blockquote className="text-lg sm:text-2xl md:text-3xl font-semibold leading-relaxed sm:leading-snug tracking-tight text-on-surface text-balance">
+              <span aria-hidden>&ldquo;</span>
+              {renderQuote()}
+              <span aria-hidden>&rdquo;</span>
             </blockquote>
 
             {/* AUTHOR */}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useFinePointer } from "@/hooks/useFinePointer";
 
 export default function MagneticButton({
     children,
@@ -9,6 +10,7 @@ export default function MagneticButton({
     children: React.ReactNode;
     className?: string;
 }) {
+    const finePointer = useFinePointer();
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
@@ -28,6 +30,10 @@ export default function MagneticButton({
     function handleMouseLeave() {
         x.set(0);
         y.set(0);
+    }
+
+    if (!finePointer) {
+        return <div className={`inline-block ${className}`}>{children}</div>;
     }
 
     return (

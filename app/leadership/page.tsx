@@ -13,17 +13,17 @@ export default function LeadershipPage() {
     <>
       {/* HERO */}
       <Reveal>
-        <section className="py-24 bg-surface">
-          <div className="max-w-7xl mx-auto px-6">
+        <section className="py-16 sm:py-20 lg:py-24 bg-surface">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="max-w-3xl">
               <p className="section-label mb-4">Executive Influence</p>
 
-              <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-on-background leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-on-background leading-tight text-balance">
                 Architecting Impact Through{" "}
                 <span className="text-primary">Leadership.</span>
               </h1>
 
-              <p className="mt-6 text-xl text-on-surface-variant leading-relaxed max-w-xl">
+              <p className="mt-6 text-base sm:text-xl text-on-surface-variant leading-relaxed max-w-xl">
                 Gayathri Sanyasi combines strategic foresight with operational
                 excellence, driving high-stakes initiatives across enterprise
                 environments and community leadership roles.
@@ -35,14 +35,14 @@ export default function LeadershipPage() {
 
       {/* VP ROLE + INTERNSHIP */}
       <Reveal>
-        <section className="pb-24 bg-surface">
-          <div className="max-w-7xl mx-auto px-6">
+        <section className="pb-16 sm:pb-24 bg-surface">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {leadershipRoles.map((role, i) => (
                 <Reveal key={role.title} delay={i * 0.12}>
                   <div
-                    className="bg-surface-container-lowest rounded-2xl p-10 ambient-shadow 
-                    hover:-translate-y-2 hover:scale-[1.01] transition-all duration-300"
+                    className="bg-surface-container-lowest rounded-2xl p-6 sm:p-10 ambient-shadow min-w-0
+                    md:hover:-translate-y-2 md:hover:scale-[1.01] transition-all duration-300"
                   >
                     <div className="flex items-start gap-4 mb-8">
                       <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center flex-shrink-0">
@@ -86,18 +86,18 @@ export default function LeadershipPage() {
 
       {/* JUDGE EXPERIENCE */}
       <Reveal>
-        <section className="py-24 bg-surface-container-low">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-12">
+        <section className="py-16 sm:py-20 lg:py-24 bg-surface-container-low">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="mb-10 sm:mb-12">
               <p className="section-label mb-3">Industry Contributions</p>
-              <h2 className="text-4xl font-black tracking-tighter text-on-background">
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-on-background text-balance">
                 Advisory & Jury Experience
               </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Judge Card */}
-              <div className="md:col-span-2 bg-surface-container-lowest rounded-2xl p-10 ambient-shadow">
+              <div className="md:col-span-2 bg-surface-container-lowest rounded-2xl p-6 sm:p-10 ambient-shadow min-w-0">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center flex-shrink-0">
                     <span className="material-symbols-outlined text-primary">
@@ -127,8 +127,8 @@ export default function LeadershipPage() {
               </div>
 
               {/* Events Count */}
-              <div className="bg-gradient-to-br from-primary to-primary-container rounded-2xl p-10 flex flex-col items-center justify-center text-center">
-                <p className="text-6xl font-black text-white">
+              <div className="bg-gradient-to-br from-primary to-primary-container rounded-2xl p-8 sm:p-10 flex flex-col items-center justify-center text-center min-h-[200px]">
+                <p className="text-5xl sm:text-6xl font-black text-white tabular-nums">
                   {judgeExperience.eventsJudged}
                 </p>
                 <p className="text-sm font-bold text-white/70 uppercase tracking-widest mt-3">
@@ -142,11 +142,11 @@ export default function LeadershipPage() {
 
       {/* KEY EVENTS */}
       <Reveal>
-        <section className="py-24 bg-surface">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-12">
+        <section className="py-16 sm:py-20 lg:py-24 bg-surface">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="mb-10 sm:mb-12">
               <p className="section-label mb-3">Event Organisation</p>
-              <h2 className="text-4xl font-black tracking-tighter text-on-background">
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-on-background text-balance">
                 Key Event Highlights
               </h2>
             </div>
@@ -155,8 +155,8 @@ export default function LeadershipPage() {
               {keyEvents.map((ev) => (
                 <div
                   key={ev.number}
-                  className="flex items-start gap-6 bg-surface-container-lowest rounded-2xl p-8 ambient-shadow 
-                  hover:translate-x-2 transition-all duration-300"
+                  className="flex items-start gap-4 sm:gap-6 bg-surface-container-lowest rounded-2xl p-5 sm:p-8 ambient-shadow min-w-0
+                  md:hover:translate-x-2 transition-all duration-300"
                 >
                   <span className="text-4xl font-black text-outline/20 flex-shrink-0">
                     {ev.number}
@@ -179,8 +179,8 @@ export default function LeadershipPage() {
 
       {/* QUOTE */}
       <Reveal>
-        <section className="py-20 bg-surface-container-low">
-          <div className="max-w-3xl mx-auto px-6 text-center">
+        <section className="py-14 sm:py-20 bg-surface-container-low">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
             <span
               className="material-symbols-outlined text-primary text-4xl mb-6 block"
               style={{ fontVariationSettings: "'FILL' 1" }}
@@ -188,9 +188,9 @@ export default function LeadershipPage() {
               format_quote
             </span>
 
-            <blockquote className="text-2xl md:text-3xl font-semibold tracking-tight text-on-surface leading-snug">
-              "Leadership is not about the position, but about the clarity of
-              the vision and the commitment to the team's collective success."
+            <blockquote className="text-lg sm:text-2xl md:text-3xl font-semibold tracking-tight text-on-surface leading-relaxed sm:leading-snug text-balance">
+              {`"Leadership is not about the position, but about the clarity of
+              the vision and the commitment to the team's collective success."`}
             </blockquote>
 
             <p className="mt-6 text-sm font-bold text-outline uppercase tracking-widest">

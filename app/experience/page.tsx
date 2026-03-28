@@ -4,13 +4,19 @@ import { motion } from "framer-motion";
 import { experiences, strategies, toolCategories, heroMetrics } from "@/data/content";
 import { staggerContainer, staggerItem } from "@/data/animations";
 import CTASection from "@/components/ui/CTASection";
+import { useFinePointer } from "@/hooks/useFinePointer";
 
 export default function ExperiencePage() {
+  const finePointer = useFinePointer();
+  const expHover = finePointer
+    ? { y: -4, transition: { duration: 0.3 } }
+    : undefined;
+
   return (
     <>
       {/* Hero */}
-      <section className="py-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 sm:py-20 lg:py-24 bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -22,7 +28,7 @@ export default function ExperiencePage() {
             </motion.p>
             <motion.h1
               variants={staggerItem}
-              className="text-5xl md:text-7xl font-black tracking-tighter text-on-background leading-tight"
+              className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-on-background leading-tight text-balance"
             >
               Professional
               <br />
@@ -30,7 +36,7 @@ export default function ExperiencePage() {
             </motion.h1>
             <motion.p
               variants={staggerItem}
-              className="mt-6 text-xl text-on-surface-variant leading-relaxed"
+              className="mt-6 text-base sm:text-xl text-on-surface-variant leading-relaxed"
             >
               A decade of enterprise account management across technology and
               hospitality verticals, consistently delivering measurable revenue
@@ -41,23 +47,23 @@ export default function ExperiencePage() {
       </section>
 
       {/* Key Metrics */}
-      <section className="bg-surface-container-low border-y border-outline-variant/10 py-12">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="bg-surface-container-low border-y border-outline-variant/10 py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-3 gap-6"
+            className="grid grid-cols-3 gap-3 sm:gap-6"
           >
             {heroMetrics.map((m) => (
               <motion.div
                 key={m.label}
                 variants={staggerItem}
-                className="text-center"
+                className="text-center min-w-0"
               >
-                <div className={`text-4xl font-black ${m.color}`}>{m.value}</div>
-                <div className="text-xs uppercase tracking-widest text-outline font-bold mt-2">
+                <div className={`text-2xl sm:text-3xl md:text-4xl font-black tabular-nums ${m.color}`}>{m.value}</div>
+                <div className="text-[10px] sm:text-xs uppercase tracking-wide sm:tracking-widest text-outline font-bold mt-2 leading-tight px-0.5">
                   {m.label}
                 </div>
               </motion.div>
@@ -67,21 +73,21 @@ export default function ExperiencePage() {
       </section>
 
       {/* Experience Cards */}
-      <section className="py-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 sm:py-20 lg:py-24 bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={staggerContainer}
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
           >
             {experiences.map((exp, i) => (
               <motion.div
                 key={exp.company}
                 variants={staggerItem}
-                whileHover={{ y: -4, transition: { duration: 0.3 } }}
-                className="bg-surface-container-lowest rounded-2xl p-10 ambient-shadow"
+                whileHover={expHover}
+                className="bg-surface-container-lowest rounded-2xl p-6 sm:p-10 ambient-shadow min-w-0"
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-8">
                   <div>
@@ -122,17 +128,17 @@ export default function ExperiencePage() {
       </section>
 
       {/* Strategies */}
-      <section className="py-24 bg-surface-container-low">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 sm:py-20 lg:py-24 bg-surface-container-low">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={staggerItem} className="mb-14">
+            <motion.div variants={staggerItem} className="mb-10 sm:mb-14">
               <p className="section-label mb-3">How I Work</p>
-              <h2 className="text-4xl font-black tracking-tighter text-on-background">
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-on-background text-balance">
                 Growth Methodology
               </h2>
             </motion.div>
@@ -142,7 +148,7 @@ export default function ExperiencePage() {
                 <motion.div
                   key={s.title}
                   variants={staggerItem}
-                  className="bg-surface-container-lowest rounded-2xl p-8 ambient-shadow"
+                  className="bg-surface-container-lowest rounded-2xl p-6 sm:p-8 ambient-shadow min-w-0"
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center mb-6">
                     <span className="material-symbols-outlined text-primary">
@@ -163,17 +169,17 @@ export default function ExperiencePage() {
       </section>
 
       {/* Tools */}
-      <section className="py-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 sm:py-20 lg:py-24 bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={staggerItem} className="mb-14">
+            <motion.div variants={staggerItem} className="mb-10 sm:mb-14">
               <p className="section-label mb-3">Toolkit</p>
-              <h2 className="text-4xl font-black tracking-tighter text-on-background">
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-on-background text-balance">
                 Tools & Technologies
               </h2>
             </motion.div>
@@ -182,7 +188,7 @@ export default function ExperiencePage() {
                 <motion.div
                   key={cat.category}
                   variants={staggerItem}
-                  className="bg-surface-container-lowest rounded-2xl p-8 ambient-shadow"
+                  className="bg-surface-container-lowest rounded-2xl p-6 sm:p-8 ambient-shadow min-w-0"
                 >
                   <h3 className="text-xs font-bold text-outline uppercase tracking-widest mb-6">
                     {cat.category}
@@ -191,7 +197,7 @@ export default function ExperiencePage() {
                     {cat.tools.map((tool) => (
                       <span
                         key={tool}
-                        className="px-4 py-2 rounded-full bg-surface-container-low text-sm font-semibold text-on-surface-variant hover:bg-primary-fixed hover:text-primary transition-colors"
+                        className="px-4 py-2 rounded-full bg-surface-container-low text-sm font-semibold text-on-surface-variant md:hover:bg-primary-fixed md:hover:text-primary transition-colors"
                       >
                         {tool}
                       </span>

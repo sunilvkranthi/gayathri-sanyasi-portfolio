@@ -8,6 +8,12 @@ export const metadata: Metadata = {
     "Enterprise B2B Sales Account Manager specializing in technology and hospitality sectors. $3.03M revenue delivered, 105% quota achievement.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover" as const,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -21,7 +27,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=optional"
           rel="stylesheet"
         />
       </head>

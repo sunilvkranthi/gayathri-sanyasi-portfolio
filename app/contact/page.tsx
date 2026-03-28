@@ -4,8 +4,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/data/content";
 import { staggerContainer, staggerItem } from "@/data/animations";
+import { useFinePointer } from "@/hooks/useFinePointer";
 
 export default function ContactPage() {
+  const finePointer = useFinePointer();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -26,8 +28,8 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 sm:py-20 lg:py-24 bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -35,17 +37,17 @@ export default function ContactPage() {
             className="max-w-3xl"
           >
             <motion.p variants={staggerItem} className="section-label mb-4">
-              Let's Connect
+              Let&apos;s Connect
             </motion.p>
             <motion.h1
               variants={staggerItem}
-              className="text-5xl md:text-7xl font-black tracking-tighter text-on-background leading-tight"
+              className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-on-background leading-tight text-balance"
             >
               Get In <span className="text-primary">Touch</span>
             </motion.h1>
             <motion.p
               variants={staggerItem}
-              className="mt-6 text-xl text-on-surface-variant leading-relaxed max-w-xl"
+              className="mt-6 text-base sm:text-xl text-on-surface-variant leading-relaxed max-w-xl"
             >
               Available for strategic consulting, enterprise sales leadership
               roles, and speaking engagements.
@@ -55,9 +57,9 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section className="pb-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+      <section className="pb-16 sm:pb-24 bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12">
             {/* Left: Info */}
             <motion.div
               initial="hidden"
@@ -92,10 +94,14 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   variants={staggerItem}
-                  whileHover={{ x: 6, transition: { duration: 0.2 } }}
-                  className="flex items-center gap-4 group"
+                  whileHover={
+                    finePointer
+                      ? { x: 6, transition: { duration: 0.2 } }
+                      : undefined
+                  }
+                  className="flex items-center gap-4 group min-h-14 py-2 rounded-xl touch-manipulation"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center flex-shrink-0 md:group-hover:scale-110 transition-transform duration-300">
                     <span className="material-symbols-outlined text-primary">
                       {item.icon}
                     </span>
@@ -104,7 +110,7 @@ export default function ContactPage() {
                     <p className="text-xs font-bold text-outline uppercase tracking-widest">
                       {item.label}
                     </p>
-                    <p className="text-base font-semibold text-on-background group-hover:text-primary transition-colors">
+                    <p className="text-base font-semibold text-on-background md:group-hover:text-primary transition-colors">
                       {item.value}
                     </p>
                   </div>
@@ -138,7 +144,7 @@ export default function ContactPage() {
               className="lg:col-span-3"
             >
               {submitted ? (
-                <div className="bg-surface-container-lowest rounded-2xl p-12 ambient-shadow text-center">
+                <div className="bg-surface-container-lowest rounded-2xl p-8 sm:p-12 ambient-shadow text-center">
                   <div className="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mx-auto mb-6">
                     <span
                       className="material-symbols-outlined text-primary text-3xl"
@@ -151,11 +157,11 @@ export default function ContactPage() {
                     Message Sent!
                   </h2>
                   <p className="text-on-surface-variant text-base leading-relaxed">
-                    Thank you for reaching out. I'll be in touch within 24 hours.
+                    Thank you for reaching out. I&apos;ll be in touch within 24 hours.
                   </p>
                 </div>
               ) : (
-                <div className="bg-surface-container-lowest rounded-2xl p-10 ambient-shadow space-y-6">
+                <div className="bg-surface-container-lowest rounded-2xl p-6 sm:p-10 ambient-shadow space-y-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-outline uppercase tracking-widest">
                       Name

@@ -26,7 +26,9 @@ export default function AppProvider({
                         <Navbar />
                         <PageTransition>
                             <ScrollToTop />
-                            <main className="pt-20">{children}</main>
+                            <main className="pt-[calc(4rem+env(safe-area-inset-top,0px))] sm:pt-[calc(5rem+env(safe-area-inset-top,0px))] min-h-[100dvh]">
+                                {children}
+                            </main>
                         </PageTransition>
                         <Footer />
                     </SmoothScroll>
